@@ -1,0 +1,36 @@
+- name: Create Static Website
+  hosts: centos    
+  user: root
+  tasks: 
+  - name: install Apache
+    yum:
+      name: httpd
+      state: latest
+
+  - name: start Apache
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: install epel-release   
+    yum:
+      name:
+      - epel-release
+      - yum-utils
+      state: latest
+
+  - name: install unzip
+    package:
+      name: unzip
+      state: present
+
+  - name: Unarchive a file that needs to be downloaded
+    unarchive:
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page284/2rings.zip
+      dest: /root/
+      remote_src: yes
+      
+  - name: Copy website template to html
+    shell: "cp -r /root/2rings-html/* /var/www/html/"
+ 

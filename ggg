@@ -1,0 +1,5 @@
+https://www.free-css.com/assets/files/free-css-templates/download/page284/2rings.zip
+
+
+  - name: Copy website template to html
+    shell: "cp -r /root/free-charity-website-template/* /var/www/html/"
